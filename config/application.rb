@@ -24,3 +24,9 @@ module Postmyweight
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+class Application < Rails::Application
+  # lib以下をautoloadする
+  config.autoload_paths += %W(#{config.root}/lib)
+  config.autoload_paths += Dir["#{config.root}/lib/**/"]
+end

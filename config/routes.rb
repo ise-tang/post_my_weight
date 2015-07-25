@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', :to => 'sessions#callback'
   post '/auth/:provider/callback', :to => 'sessions#callback'
   get '/logout' => 'sessions#destroy', :as => :logout
+  get "/tweet", :to => 'home#tweet', :as => 'tweet'
+  post "/post_my_weight", :to => 'home#post_my_weight', :as => 'post_my_weight'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

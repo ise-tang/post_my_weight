@@ -1,2 +1,9 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<%= link_to 'tweet', tweet_path %>
+
+<%= form_tag post_my_weight_path do %>
+  <%= text_field_tag 'weight' %>
+  <%= submit_tag 'send' %>
+<% end %>

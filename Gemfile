@@ -56,3 +56,6 @@ end
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'settingslogic'
+
+# Twitter update
+gem 'twitter', "~> 4.8"
