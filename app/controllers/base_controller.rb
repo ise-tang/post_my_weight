@@ -1,4 +1,4 @@
-class BaseController < ApplicationController\
+class BaseController < ApplicationController
   protect_from_forgery
 
   def login_required
