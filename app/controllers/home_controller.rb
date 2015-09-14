@@ -12,8 +12,9 @@ class HomeController < BaseController
 
   def post_my_weight
     text = "今の体重は#{params[:weight]}kgでした"
-    twitter_client.update(text)
-    flash[:notice] = "tweet: #{text}"
+    @current_user.weights.create(weight: params[:weight])
+    #twitter_client.update(text)
+    flash[:notice] = "tweet: #{text}." 
     redirect_to root_path
   end
 
