@@ -59,3 +59,6 @@ gem 'settingslogic'
 
 # Twitter update
 gem 'twitter', "~> 4.8"
+
+# for Write graphs
+gem 'gruff'
