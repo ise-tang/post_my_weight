@@ -1,4 +1,6 @@
 class HomeController < BaseController
+  require 'gruff'
+
   before_action :login_required, only: [:tweet, :post_my_weight]
   def index
   end
@@ -13,6 +15,7 @@ class HomeController < BaseController
   def post_my_weight
     text = "今の体重は#{params[:weight]}kgでした"
     @current_user.weights.create(weight: params[:weight])
+    write_graph(@current_user.weights)
     #twitter_client.update(text)
     flash[:notice] = "tweet: #{text}." 
     redirect_to root_path
@@ -25,4 +28,23 @@ class HomeController < BaseController
       :oauth_token_secret => @current_user.secret
     )
   end
+
+  private
+  def write_graph(weights)
+    g = Gruff::Line.new
+    g.title = "Recently Weights" 
+     
+    data = weights.collect {|w| w.weight}
+    g.data("Weights", data)
+     
+    labels = Array.new
+    weights.each_with_index do |w, i|
+      labels.push([i ,w.created_at.strftime("%m-%d")])
+    end
+      
+    g.labels = Hash[*labels.flatten]
+     
+    g.write("./tmp/graphes/my_weight_graph-#{Time.now.strftime("%Y%m%d%H%M%S")}.png")
+  end
+
 end
