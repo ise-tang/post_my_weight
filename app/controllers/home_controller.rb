@@ -15,8 +15,8 @@ class HomeController < BaseController
   def post_my_weight
     text = "今の体重は#{params[:weight]}kgでした"
     @current_user.weights.create(weight: params[:weight])
-    write_graph(@current_user.weights)
-    #twitter_client.update(text)
+    graph_image = write_graph(@current_user.weights)
+    twitter_client.update_with_media(text, File.open(graph_image))
     flash[:notice] = "tweet: #{text}." 
     redirect_to root_path
   end
@@ -43,8 +43,10 @@ class HomeController < BaseController
     end
       
     g.labels = Hash[*labels.flatten]
-     
-    g.write("./tmp/graphes/my_weight_graph-#{Time.now.strftime("%Y%m%d%H%M%S")}.png")
+    file_name = "./tmp/graphes/my_weight_graph-#{Time.now.strftime("%Y%m%d%H%M%S")}.png" 
+    g.write(file_name)
+
+    return file_name
   end
 
 end
