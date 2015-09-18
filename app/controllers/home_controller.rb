@@ -39,7 +39,7 @@ class HomeController < BaseController
      
     labels = Array.new
     weights.each_with_index do |w, i|
-      labels.push([i ,w.created_at.strftime("%m-%d")])
+      labels.push([i ,w.created_at.in_time_zone('Tokyo').strftime("%m-%d")])
     end
       
     g.labels = Hash[*labels.flatten]
