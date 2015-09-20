@@ -1,0 +1,15 @@
+defaults: &defaults
+
+development:
+  <<: *defaults
+  twitter:
+    consumer_key: "q0YwE3VNrRkRQwiP2Fe2xx3NQ"
+    consumer_secret: "XUECd1XWbY8m8UPTBnnBal6rGDkI5JMQn2AKVZmLiA112aeOMr"
+
+test:
+  <<: *defaults
+
+production:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+  twitter_api_key: <%= ENV["TWITTER_CONSUMER_KEY"] %>
+  twitter_api_secret: <%= ENV["TWITTER_CONSUMER_SECRET"] %>
