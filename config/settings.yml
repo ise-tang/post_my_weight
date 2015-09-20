@@ -2,9 +2,6 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  twitter:
-    consumer_key: "q0YwE3VNrRkRQwiP2Fe2xx3NQ"
-    consumer_secret: "XUECd1XWbY8m8UPTBnnBal6rGDkI5JMQn2AKVZmLiA112aeOMr"
 
 test:
   <<: *defaults
