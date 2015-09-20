@@ -2,21 +2,32 @@
 <html>
 <head>
   <title>Postmyweight</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 </head>
 <body>
-
-<% if current_user %>
-  <%= current_user.name %> <%= link_to 'ログアウト', logout_path %>
+<nav class="navbar">
+  <p class="navbar-text">
+    <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
+  </p>
+  <p class="navbar-text">
+  <% if current_user %>
+    <%= current_user.name %> <%= link_to 'ログアウト', logout_path %>
   <% else %>
     <%= link_to 'ログイン', '/auth/twitter' %>
-    <% end %>
-
+  <% end %>
+  </p>
 <%= flash[:notice] %>
-
+</nav>
+<h1>Twitter に体重をつぶやく奴</h1>
 <%= yield %>
-
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
