@@ -9,5 +9,5 @@ test:
 production:
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
   twitter:
-    comsumer_key: <%= ENV["TWITTER_CONSUMER_KEY"] %>
-    comsumer_secret: <%= ENV["TWITTER_CONSUMER_SECRET"] %>
+    consumer_key: <%= ENV["TWITTER_CONSUMER_KEY"] %>
+    consumer_secret: <%= ENV["TWITTER_CONSUMER_SECRET"] %>
