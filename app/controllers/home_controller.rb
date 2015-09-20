@@ -43,7 +43,7 @@ class HomeController < BaseController
     end
       
     g.labels = Hash[*labels.flatten]
-    file_name = "./tmp/graphes/my_weight_graph-#{Time.now.strftime("%Y%m%d%H%M%S")}.png" 
+    file_name = "./tmp/my_weight_graph-#{Time.now.strftime("%Y%m%d%H%M%S")}.png" 
     g.write(file_name)
 
     return file_name
