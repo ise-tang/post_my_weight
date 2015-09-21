@@ -64,3 +64,5 @@ gem 'twitter', "~> 4.8"
 
 # for Write graphs
 gem 'gruff'
+
+gem 'dotenv-rails'
