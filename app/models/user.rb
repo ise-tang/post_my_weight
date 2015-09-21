@@ -11,4 +11,17 @@ class User < ActiveRecord::Base
       user.secret = auth['credentials']['secret']
     end
   end
+
+  def check_increase
+    first, second = self.weights.sort { |a, b| b.id <=> a.id }.slice(0,2)
+ 
+    if first.weight > second.weight then
+      "↑"
+    elsif first.weight < second.weight then
+      "↓"
+    else
+      "→"
+    end
+
+  end
 end
