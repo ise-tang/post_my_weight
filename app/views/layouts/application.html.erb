@@ -24,8 +24,12 @@
     <%= link_to 'ログイン', '/auth/twitter' %>
   <% end %>
   </p>
-<%= flash[:notice] %>
 </nav>
+<% if flash[:notice] then %>
+<div class="alert alert-success" role="alert">
+  <%= flash[:notice] %>
+</div>
+<% end %>
 <h1><small>Twitter に体重をつぶやく奴</small></h1>
 <%= yield %>
 <!-- Latest compiled and minified JavaScript -->
