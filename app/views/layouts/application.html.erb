@@ -24,6 +24,11 @@
     <%= link_to 'ログイン', '/auth/twitter' %>
   <% end %>
   </p>
+  <p class="navbar-text navbar-right"">
+  <% if current_user %>
+    <%= link_to '設定', edit_path %>
+  <% end %>
+  </p>
 </nav>
 <% if flash[:notice] then %>
 <div class="alert alert-success" role="alert">

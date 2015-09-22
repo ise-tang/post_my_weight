@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'edit', :to => 'users#edit', :as => :edit
+  patch 'users/update/:id', :to => 'users#update', :as => 'user'
+
   root 'home#index'
   get "home/index" => 'home/index'
   get '/auth/:provider/callback', :to => 'sessions#callback'

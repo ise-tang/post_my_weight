@@ -16,12 +16,14 @@ class HomeController < BaseController
     text = "今の体重は#{params[:weight]}kgでした"
     @current_user.weights.create(weight: params[:weight])
     weights = if @current_user.weights.length >=7 then 
-                @current_user.weights.sort {|a, b| b.id <=> a.id }.slice(0, 7)
+                @current_user.weights.slice(-7, 7)
               else
                 @current_user.weights
               end
     grapher = Grapher.new
     graph_image = grapher.write_graph(weights)
+    name = params[:weight].to_s + @current_user.check_increase + @current_user.name
+    twitter_client.update_profile({:name => name})
     twitter_client.update_with_media(text, File.open(graph_image))
     flash[:notice] = "tweet: #{text}." 
     redirect_to root_path
