@@ -22,7 +22,7 @@ class HomeController < BaseController
               end
     grapher = Grapher.new
     graph_image = grapher.write_graph(weights)
-    name = params[:weight].to_s + @current_user.check_increase + @current_user.name
+    name = params[:weight].to_s + "kg" + @current_user.check_increase + "の"+ @current_user.name
     twitter_client.update_profile({:name => name})
     twitter_client.update_with_media(text, File.open(graph_image))
     flash[:notice] = "tweet: #{text}." 
