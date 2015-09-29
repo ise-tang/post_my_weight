@@ -52,6 +52,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'shoulda-matchers', '2.5.0'
 end
 
 # Twitter login
