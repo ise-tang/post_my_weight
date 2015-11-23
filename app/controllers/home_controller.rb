@@ -31,7 +31,7 @@ class HomeController < BaseController
 
   def post_my_weight_30
     text = "最近30回分のグラフです"
-    weights = Weight.where("user_id = ?", @current_user.id)
+    weights = Weight.where("user_id = '?'", @current_user.id)
                      .order("created_at DESC")
                      .limit(30)
     grapher = Grapher.new
