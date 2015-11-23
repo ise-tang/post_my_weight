@@ -34,6 +34,7 @@ class HomeController < BaseController
     weights = Weight.where("user_id = '?'", @current_user.id)
                      .order("created_at DESC")
                      .limit(30)
+    weights = weights.sort
     grapher = Grapher.new
     graph_image = grapher.write_graph(weights)
     twitter_client.update_with_media(text, File.open(graph_image))
