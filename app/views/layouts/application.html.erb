@@ -13,23 +13,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-<nav class="navbar">
-  <p class="navbar-text">
-    <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
-  </p>
-  <p class="navbar-text">
-  <% if current_user %>
-    <%= current_user.name %> <%= link_to 'ログアウト', logout_path %>
-  <% else %>
-    <%= link_to 'ログイン', '/auth/twitter' %>
-  <% end %>
-  </p>
-  <p class="navbar-text navbar-right"">
-  <% if current_user %>
-    <%= link_to '設定', edit_path %>
-  <% end %>
-  </p>
-</nav>
+<div class="navbar">
+    <div class="container"> 
+      <div class="navbar-text">
+        <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
+      </div>
+      <div class="navbar-text">
+      <% if current_user %>
+        <%= current_user.name %> <%= link_to 'ログアウト', logout_path %>
+      <% else %>
+        <%= link_to 'ログイン', '/auth/twitter' %>
+      <% end %>
+      </div>
+      <div class="navbar-text navbar-right">
+      <% if current_user %>
+        <%= link_to '設定', edit_path %>
+      <% end %>
+      </div>
+    </div>
+</div>
 <% if flash[:notice] then %>
 <div class="alert alert-success" role="alert">
   <%= flash[:notice] %>

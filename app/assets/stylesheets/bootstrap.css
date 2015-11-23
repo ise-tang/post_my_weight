@@ -1,3 +1,7 @@
 .navbar {
 background-color: #EEAE0E;
 }
+
+.container {
+  display: "inline";
+  }

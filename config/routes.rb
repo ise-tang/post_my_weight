@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy', :as => :logout
   get "/tweet", :to => 'home#tweet', :as => 'tweet'
   post "/post_my_weight", :to => 'home#post_my_weight', :as => 'post_my_weight'
+  get "/post_my_weight_30", :to => 'home#post_my_weight_30', :as => 'post_my_weight_30'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

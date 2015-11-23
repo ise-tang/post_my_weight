@@ -20,3 +20,5 @@ log/*.log
 tmp/**/*
 db/schema.rb
 .env
+
+public/assets/*

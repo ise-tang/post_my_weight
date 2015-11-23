@@ -4,6 +4,8 @@
     <%= number_field_tag 'weight', nil, step: 0.1 %>
     <%= submit_tag '体重をつぶやく' %>
   <% end %>
+
+  <%= link_to '直近30回分のグラフを投稿', post_my_weight_30_path %>
 <% else %>
   <p>ログインしてください</p>
 <% end %>
