@@ -37,6 +37,22 @@
   <%= flash[:notice] %>
 </div>
 <% end %>
+<% if flash[:alert] then %>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  <%= flash[:alert] %>
+</div>
+<% end %>
+<% if @errors %>
+  <div class="alert alert-danger"" role="alert"">
+    <ul>
+    <% @errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <h1><small>Twitter に体重をつぶやく奴</small></h1>
 <%= yield %>
 <!-- Latest compiled and minified JavaScript -->

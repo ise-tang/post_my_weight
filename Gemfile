@@ -9,6 +9,7 @@ group :development do
   gem 'sqlite3'
   # See https://github.com/rails/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
+  gem 'pry'
 end
 group :production do
   gem 'pg'
