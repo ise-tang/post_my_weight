@@ -16,7 +16,9 @@
 <div class="navbar">
     <div class="container"> 
       <div class="navbar-text">
-        <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
+        <% end %>
       </div>
       <div class="navbar-text">
       <% if current_user %>
