@@ -7,8 +7,16 @@ class Grapher
     g.data("Weights", data)
      
     labels = Array.new
-    weights.each_with_index do |w, i|
-      labels.push([i ,w.created_at.in_time_zone('Tokyo').strftime("%m-%d")])
+    if weights.length > 7 
+      weights.each_with_index do |w, i|
+        if i % 4 == 0
+          labels.push([i ,w.created_at.in_time_zone('Tokyo').strftime("%m-%d")])
+        end
+      end
+    else
+      weights.each_with_index do |w, i|
+        labels.push([i ,w.created_at.in_time_zone('Tokyo').strftime("%m-%d")])
+      end
     end
       
     g.labels = Hash[*labels.flatten]
