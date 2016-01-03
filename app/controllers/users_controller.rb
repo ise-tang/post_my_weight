@@ -8,6 +8,7 @@ class UsersController < BaseController
   def update
     @user = User.find(params[:id]) 
     @user.name = params[:user][:name]
+    @user.update_name = params[:user][:update_name]
     if @user.save then
       flash[:notice] = "設定を保存しました"
     else

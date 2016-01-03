@@ -4,6 +4,8 @@
   <div class="form-group">
     <%= f.label :name, "名前"%>
     <%= f.text_field :name %>
+    <%= f.label :update_name, "投稿時に名前を変更する" %>
+    <%= f.check_box :update_name %>
   </div>
   <%= f.submit "保存" %>
 <% end %>
