@@ -1,20 +1,20 @@
 class Grapher     
-  def write_graph(weights)
+  def write_graph(measurements)
     g = Gruff::Line.new
     g.title = "Recently Weights" 
      
-    data = weights.collect {|w| w.weight}
+    data = measurements.collect {|w| w.weight}
     g.data("Weights", data)
      
     labels = Array.new
-    if weights.length > 7 
-      weights.each_with_index do |w, i|
+    if measurements.length > 7 
+      measurements.each_with_index do |w, i|
         if i % 4 == 0
           labels.push([i ,w.created_at.in_time_zone('Tokyo').strftime("%m-%d")])
         end
       end
     else
-      weights.each_with_index do |w, i|
+      measurements.each_with_index do |w, i|
         labels.push([i ,w.created_at.in_time_zone('Tokyo').strftime("%m-%d")])
       end
     end

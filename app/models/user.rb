@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :weights
+  has_many :measurements
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   end
 
   def check_increase
-    first, second = self.weights.sort { |a, b| b.id <=> a.id }.slice(0,2)
+    first, second = self.measurements.sort { |a, b| b.id <=> a.id }.slice(0,2)
  
     if first.weight > second.weight then
       "↑"

@@ -15,14 +15,14 @@ class HomeController < BaseController
   def post_my_weight
     text = "今の体重は#{params[:weight]}kgでした"
     begin
-      @current_user.weights.create!(weight: params[:weight])
-      weights = if @current_user.weights.length >=7 then 
-                  @current_user.weights.slice(-7, 7)
-                else
-                  @current_user.weights
-                end
+      @current_user.measurements.create!(weight: params[:weight])
+      measurements = if @current_user.measurements.length >=7 then 
+                       @current_user.measurements.slice(-7, 7)
+                     else
+                       @current_user.measurements
+                     end
       grapher = Grapher.new
-      graph_image = grapher.write_graph(weights)
+      graph_image = grapher.write_graph(measurements)
       if current_user.update_name
         name = params[:weight].to_s + "kg" + @current_user.check_increase + "の"+ @current_user.name
         twitter_client.update_profile({:name => name})
@@ -40,12 +40,12 @@ class HomeController < BaseController
 
   def post_my_weight_30
     text = "最近30回分のグラフです"
-    weights = Weight.where("user_id = '?'", @current_user.id)
+    measurements = Measurement.where("user_id = '?'", @current_user.id)
                      .order("created_at DESC")
                      .limit(30)
-    weights = weights.sort
+    measurements = measurements.sort
     grapher = Grapher.new
-    graph_image = grapher.write_graph(weights)
+    graph_image = grapher.write_graph(measurements)
     twitter_client.update_with_media(text, File.open(graph_image))
     flash[:notice] = "tweet: #{text}." 
     redirect_to root_path
