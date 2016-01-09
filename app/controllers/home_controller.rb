@@ -15,7 +15,7 @@ class HomeController < BaseController
   def post_my_weight
     text = "今の体重は#{params[:weight]}kgでした"
     begin
-      @current_user.measurements.create!(weight: params[:weight])
+      @current_user.measurements.create!(weight: params[:weight], body_fat_percentage: params[:body_fat_percentage])
       measurements = if @current_user.measurements.length >=7 then 
                        @current_user.measurements.slice(-7, 7)
                      else

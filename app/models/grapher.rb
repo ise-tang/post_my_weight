@@ -3,8 +3,10 @@ class Grapher
     g = Gruff::Line.new
     g.title = "Recently Weights" 
      
-    data = measurements.collect {|w| w.weight}
-    g.data("Weights", data)
+    weights =     measurements.collect {|w| w.weight}
+    percentages = measurements.collect {|w| w.body_fat_percentage}
+    g.data("Weights", weights)
+    g.data("Body Fat Percentage", percentages) unless percentages.nil?
      
     labels = Array.new
     if measurements.length > 7 

@@ -8,9 +8,11 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
     attributes:
-      weight:
+      measurement:
         weight:
           one: 体重
+        body_fat_percentage:
+          one: 体脂肪率
   date:
     abbr_day_names:
     - 日

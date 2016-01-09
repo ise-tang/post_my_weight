@@ -1,7 +1,8 @@
 <% if current_user %>
   <%= form_tag post_my_weight_path do %>
     <%# text_field_tag 'weight', nil, placeholder: '体重を入力してください' %>
-    <%= number_field_tag 'weight', nil, step: 0.1 %>
+    <%= number_field_tag 'weight', nil, step: 0.1, placeholder: '体重を入力してください'%>
+    <%= number_field_tag 'body_fat_percentage', nil, step: 0.1, placeholder: '体脂肪を入力してください' %>
     <%= submit_tag '体重をつぶやく' %>
   <% end %>
 
