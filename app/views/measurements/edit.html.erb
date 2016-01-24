@@ -1,0 +1,9 @@
+<h1>測定修正</h1>
+<%= form_for @measurement do |f| %>
+  <%# text_field_tag 'weight', nil, placeholder: '体重を入力してください' %>
+  <%= f.number_field 'weight', step: 0.1, placeholder: '体重を入力してください'%>
+  <%= f.number_field 'body_fat_percentage', step: 0.1, placeholder: '体脂肪を入力してください' %>
+  <%= f.submit '修正する' %>
+<% end %>
+
+<%= link_to '測定一覧に戻る', measurements_url %>

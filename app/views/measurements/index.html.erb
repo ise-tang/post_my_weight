@@ -1,0 +1,18 @@
+<h1>測定一覧</h1>
+
+<% @measurements.each do |measurement| %>
+<div class='measurement'>
+  <span><%= measurement.updated_at.to_s(:measured_on) %></span>
+  <div>
+     <span>体重: <%= measurement.weight %>kg</span>
+  </div>
+  <% if measurement.body_fat_percentage %>
+    <div>
+      <span>体脂肪率: <%= measurement.body_fat_percentage %>%</span>
+    </div>
+  <% end %>
+  <%= link_to '修正する', edit_measurement_url(measurement) %>
+<div>
+<% end %>
+
+<%= paginate @measurements %>

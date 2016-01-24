@@ -10,6 +10,7 @@ group :development do
   # See https://github.com/rails/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
   gem 'pry'
+  gem 'pry-rails'
 end
 group :production do
   gem 'pg'
@@ -69,3 +70,5 @@ gem 'twitter', "~> 4.8"
 gem 'gruff'
 
 gem 'dotenv-rails'
+
+gem 'kaminari'

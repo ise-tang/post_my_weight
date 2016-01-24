@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-  get 'edit', :to => 'users#edit', :as => :edit
+  get   'measurements/edit/:id', to: 'measurements#edit',  as: 'edit_measurement'
+  patch 'measurements/update/:id',  to: 'measurements#update', as: 'measurement'
+
+  get   'edit', :to => 'users#edit', :as => :edit
   patch 'users/update/:id', :to => 'users#update', :as => 'user'
 
-  root 'home#index'
-  get "home/index" => 'home/index'
-  get '/auth/:provider/callback', :to => 'sessions#callback'
-  post '/auth/:provider/callback', :to => 'sessions#callback'
-  get '/logout' => 'sessions#destroy', :as => :logout
-  get "/tweet", :to => 'home#tweet', :as => 'tweet'
-  post "/post_my_weight", :to => 'home#post_my_weight', :as => 'post_my_weight'
-  get "/post_my_weight_30", :to => 'home#post_my_weight_30', :as => 'post_my_weight_30'
+  root  'home#index'
+  get   "home/index" => 'home/index'
+  get   '/auth/:provider/callback', :to => 'sessions#callback'
+  post  '/auth/:provider/callback', :to => 'sessions#callback'
+  get   '/logout' => 'sessions#destroy', :as => :logout
+  get   "/tweet", :to => 'home#tweet', :as => 'tweet'
+  post  "/post_my_weight", :to => 'home#post_my_weight', :as => 'post_my_weight'
+  get   "/post_my_weight_30", :to => 'home#post_my_weight_30', :as => 'post_my_weight_30'
+  get   "measurements" , to: 'measurements#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
