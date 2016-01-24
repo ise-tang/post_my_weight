@@ -2,7 +2,7 @@
 
 <% @measurements.each do |measurement| %>
 <div class='measurement'>
-  <span><%= measurement.updated_at.to_s(:measured_on) %></span>
+  <span><%= measurement.created_at.to_s(:measured_on) %></span>
   <div>
      <span>体重: <%= measurement.weight %>kg</span>
   </div>

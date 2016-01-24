@@ -1,6 +1,6 @@
 class MeasurementsController < BaseController
   def index
-    @measurements = Measurement.where(user_id: current_user.id).order('updated_at DESC').page(params[:page]).per(10)
+    @measurements = Measurement.where(user_id: current_user.id).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def edit
@@ -11,9 +11,10 @@ class MeasurementsController < BaseController
     @measurement = Measurement.find(params['id'])
 
     attr = measurement_params
-    if @measurement.update_attributes(attr)
+    begin @measurement.update_attributes!(attr)
       redirect_to(edit_measurement_url(@measurement), :notice => '体重修正を行いました')
-    else
+    rescue ActiveRecord::RecordInvalid => invalid
+      @errors = invalid.record.errors
       render action: :edit
     end
   end
