@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   end
 
   def check_increase
+    return "→" if self.measurements.size == 1
+
     first, second = self.measurements.sort { |a, b| b.id <=> a.id }.slice(0,2)
  
     if first.weight > second.weight then

@@ -55,6 +55,7 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', '2.5.0'
+  gem 'minitest'
 end
 
 # Twitter login

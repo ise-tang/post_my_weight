@@ -215,6 +215,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  minitest
   omniauth
   omniauth-twitter
   pg

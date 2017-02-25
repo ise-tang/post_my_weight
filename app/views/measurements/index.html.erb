@@ -11,6 +11,12 @@
       <span>体脂肪率: <%= measurement.body_fat_percentage %>%</span>
     </div>
   <% end %>
+  <% if measurement.memo %>
+    <div>
+      <span>メモ:</span>
+      <div><%= measurement.memo %></div>
+    </div>
+  <% end %>
   <%= link_to '修正する', edit_measurement_url(measurement) %>
 <div>
 <% end %>
