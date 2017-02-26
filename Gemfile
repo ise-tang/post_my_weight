@@ -65,7 +65,7 @@ gem 'omniauth-twitter'
 gem 'settingslogic'
 
 # Twitter update
-gem 'twitter', "~> 4.8"
+gem 'twitter'
 
 # for Write graphs
 gem 'gruff'

@@ -22,13 +22,22 @@ class HomeController < BaseController
                        @current_user.measurements
                      end
       grapher = Grapher.new
-      graph_image = grapher.write_graph(measurements)
+      graph_weight_image = grapher.write_weight_graph(measurements)
+      graph_bfp_image = grapher.write_bfp_graph(measurements) if params[:body_fat_percentage].present?
+
       if current_user.update_name
         name = params[:weight].to_s + "kg" + @current_user.check_increase + "の"+ @current_user.name
         twitter_client.update_profile({:name => name})
       end
-      twitter_client.update_with_media(text, File.open(graph_image))
-      flash[:notice] = "tweet: #{text}." 
+
+      if params[:body_fat_percentage].present?
+        weight_image_id = twitter_client.upload(File.new(graph_weight_image))
+        bfp_image_id = twitter_client.upload(File.new(graph_bfp_image))
+        twitter_client.update(text, media_ids: [weight_image_id, bfp_image_id].join(","))
+      else
+        twitter_client.update_with_media(text, File.open(graph_weight_image))
+      end
+      flash[:notice] = "tweet: #{text}."
     rescue ActiveRecord::RecordInvalid => invalid
       @errors = invalid.record.errors
     rescue => e
@@ -53,9 +62,11 @@ class HomeController < BaseController
 
   private
   def twitter_client
-    Twitter::Client.new(
-      :oauth_token        => @current_user.token,
-      :oauth_token_secret => @current_user.secret
-    )
+    Twitter::REST::Client.new do |config|
+      config.consumer_key        = Settings.twitter.consumer_key
+      config.consumer_secret     = Settings.twitter.consumer_secret
+      config.access_token        = @current_user.token
+      config.access_token_secret = @current_user.secret
+    end
   end
 end
