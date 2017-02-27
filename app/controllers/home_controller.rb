@@ -67,9 +67,9 @@ class HomeController < BaseController
                      .limit(90)
     measurements = measurements.sort
     grapher = Grapher.new
-    graph_image = grapher.write_weight_graph(measurements)
+    graph_image = grapher.write_weight_graph(measurements, 9)
     twitter_client.update_with_media(text, File.open(graph_image))
-    flash[:notice] = "tweet: #{text}." 
+    flash[:notice] = "tweet: #{text}."
     redirect_to root_path
   end
 

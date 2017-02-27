@@ -1,5 +1,5 @@
 class Grapher     
-  def write_weight_graph(measurements)
+  def write_weight_graph(measurements, label_span=4)
     g = Gruff::Line.new
     g.title = "Recently Weights"
 
@@ -9,7 +9,7 @@ class Grapher
     labels = Array.new
     if measurements.length > 7
       measurements.each_with_index do |w, i|
-        if i % 4 == 0
+        if i % label_span == 0
           labels.push([i ,w.created_at.in_time_zone('Tokyo').strftime("%m-%d")])
         end
       end
