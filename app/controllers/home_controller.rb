@@ -1,7 +1,7 @@
 class HomeController < BaseController
   require 'gruff'
 
-  before_action :login_required, only: [:tweet, :post_my_weight, :post_my_weight_30]
+  before_action :login_required, only: [:tweet, :post_my_weight, :post_my_weight_30, :post_my_weight_90]
   def index
   end
 
@@ -54,7 +54,7 @@ class HomeController < BaseController
                      .limit(30)
     measurements = measurements.sort
     grapher = Grapher.new
-    graph_image = grapher.write_graph(measurements)
+    graph_image = grapher.write_weight_graph(measurements)
     twitter_client.update_with_media(text, File.open(graph_image))
     flash[:notice] = "tweet: #{text}." 
     redirect_to root_path
@@ -67,7 +67,7 @@ class HomeController < BaseController
                      .limit(90)
     measurements = measurements.sort
     grapher = Grapher.new
-    graph_image = grapher.write_graph(measurements)
+    graph_image = grapher.write_weight_graph(measurements)
     twitter_client.update_with_media(text, File.open(graph_image))
     flash[:notice] = "tweet: #{text}." 
     redirect_to root_path
