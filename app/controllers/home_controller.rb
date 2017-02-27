@@ -43,7 +43,7 @@ class HomeController < BaseController
     rescue => e
       flash[:alert] = e.message
     ensure
-      render 'home/index'
+      redirect_to root_path
     end
   end
 
@@ -52,6 +52,19 @@ class HomeController < BaseController
     measurements = Measurement.where("user_id = '?'", @current_user.id)
                      .order("created_at DESC")
                      .limit(30)
+    measurements = measurements.sort
+    grapher = Grapher.new
+    graph_image = grapher.write_graph(measurements)
+    twitter_client.update_with_media(text, File.open(graph_image))
+    flash[:notice] = "tweet: #{text}." 
+    redirect_to root_path
+  end
+
+  def post_my_weight_90
+    text = "最近90回分のグラフです"
+    measurements = Measurement.where("user_id = '?'", @current_user.id)
+                     .order("created_at DESC")
+                     .limit(90)
     measurements = measurements.sort
     grapher = Grapher.new
     graph_image = grapher.write_graph(measurements)

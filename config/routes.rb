@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get   "/tweet", :to => 'home#tweet', :as => 'tweet'
   post  "/post_my_weight", :to => 'home#post_my_weight', :as => 'post_my_weight'
   get   "/post_my_weight_30", :to => 'home#post_my_weight_30', :as => 'post_my_weight_30'
+  get   "/post_my_weight_90", :to => 'home#post_my_weight_90', :as => 'post_my_weight_90'
   get   "measurements" , to: 'measurements#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
