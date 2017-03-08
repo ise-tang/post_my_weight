@@ -2,6 +2,7 @@ class Grapher
   def write_weight_graph(measurements, label_span=4)
     g = Gruff::Line.new
     g.title = "Recently Weights"
+    g.y_axis_increment = 0.5
 
     weights =     measurements.collect {|w| w.weight}
     g.data("Weights", weights)
@@ -29,6 +30,7 @@ class Grapher
   def write_bfp_graph(measurements)
     g = Gruff::Line.new
     g.title = "Recently Body Fat Percentage"
+    g.y_axis_increment = 0.5
 
     percentages = measurements.collect {|w| w.body_fat_percentage}
     g.data("Body Fat Percentage", percentages)
