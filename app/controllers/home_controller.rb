@@ -86,6 +86,20 @@ class HomeController < BaseController
     redirect_to root_path
   end
 
+  def post_my_weights
+    times = params[:times]
+    text = "最近#{times}回分のグラフです"
+    measurements = Measurement.where("user_id = '?'", @current_user.id)
+                     .order("created_at DESC")
+                     .limit(times)
+    measurements = measurements.sort
+    grapher = Grapher.new
+    graph_image = grapher.write_weight_graph(measurements, times/10)
+    twitter_client.update_with_media(text, File.open(graph_image))
+    flash[:notice] = "tweet: #{text}."
+    redirect_to root_path
+  end
+
   private
   def twitter_client
     Twitter::REST::Client.new do |config|

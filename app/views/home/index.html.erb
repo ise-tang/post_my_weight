@@ -10,6 +10,10 @@
   <%= link_to '直近30回分のグラフを投稿', post_my_weight_30_path %>
   <%= link_to '直近90回分のグラフを投稿', post_my_weight_90_path %>
   <%= link_to '直近180回分のグラフを投稿', post_my_weight_180_path %>
+  <% form_tag post_my_weights_path do %>
+    <%= number_field_tag 'times', 7, step: 1, placeholder: '回数を入力してください'%>
+    <%= submit_tag '回数分のグラフをつぶやく' %>
+  <% end %>
   <%= link_to '測定一覧を表示', measurements_url %>
 <% else %>
   <p>ログインしてください</p>
