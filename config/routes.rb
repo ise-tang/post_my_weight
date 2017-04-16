@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get   '/logout' => 'sessions#destroy', :as => :logout
   get   "/tweet", :to => 'home#tweet', :as => 'tweet'
   post  "/post_my_weight", :to => 'home#post_my_weight', :as => 'post_my_weight'
-  post   "/post_my_weights", :to => 'home#post_my_weights', :as => 'post_my_weights'
+  get   "/post_my_weights", :to => 'home#post_my_weights', :as => 'post_my_weights'
   get   "measurements" , to: 'measurements#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

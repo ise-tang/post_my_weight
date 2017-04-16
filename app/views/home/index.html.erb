@@ -7,7 +7,7 @@
     <%= submit_tag '体重をつぶやく' %>
   <% end %>
 
-  <%= form_tag post_my_weights_path do %>
+  <%= form_tag post_my_weights_path , method: :get do %>
     <%= number_field_tag 'times', 7, step: 1, placeholder: '回数を入力してください'%>
     <%= submit_tag '回分のグラフをつぶやく' %>
   <% end %>
