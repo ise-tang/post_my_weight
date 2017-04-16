@@ -47,45 +47,6 @@ class HomeController < BaseController
     end
   end
 
-  def post_my_weight_30
-    text = "最近30回分のグラフです"
-    measurements = Measurement.where("user_id = '?'", @current_user.id)
-                     .order("created_at DESC")
-                     .limit(30)
-    measurements = measurements.sort
-    grapher = Grapher.new
-    graph_image = grapher.write_weight_graph(measurements)
-    twitter_client.update_with_media(text, File.open(graph_image))
-    flash[:notice] = "tweet: #{text}." 
-    redirect_to root_path
-  end
-
-  def post_my_weight_90
-    text = "最近90回分のグラフです"
-    measurements = Measurement.where("user_id = '?'", @current_user.id)
-                     .order("created_at DESC")
-                     .limit(90)
-    measurements = measurements.sort
-    grapher = Grapher.new
-    graph_image = grapher.write_weight_graph(measurements, 9)
-    twitter_client.update_with_media(text, File.open(graph_image))
-    flash[:notice] = "tweet: #{text}."
-    redirect_to root_path
-  end
-
-  def post_my_weight_180
-    text = "最近180回分のグラフです"
-    measurements = Measurement.where("user_id = '?'", @current_user.id)
-                     .order("created_at DESC")
-                     .limit(180)
-    measurements = measurements.sort
-    grapher = Grapher.new
-    graph_image = grapher.write_weight_graph(measurements, 18)
-    twitter_client.update_with_media(text, File.open(graph_image))
-    flash[:notice] = "tweet: #{text}."
-    redirect_to root_path
-  end
-
   def post_my_weights
     times = params[:times].to_i
     text = "最近#{times}回分のグラフです"
