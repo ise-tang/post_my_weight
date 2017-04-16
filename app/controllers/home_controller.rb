@@ -87,7 +87,7 @@ class HomeController < BaseController
   end
 
   def post_my_weights
-    times = params[:times]
+    times = params[:times].to_i
     text = "最近#{times}回分のグラフです"
     measurements = Measurement.where("user_id = '?'", @current_user.id)
                      .order("created_at DESC")
