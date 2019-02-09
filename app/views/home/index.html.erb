@@ -1,16 +1,33 @@
 <% if current_user %>
   <%= form_tag post_my_weight_path do %>
+    <div class="form-group">
     <%# text_field_tag 'weight', nil, placeholder: '体重を入力してください' %>
-    <%= number_field_tag 'weight', nil, step: 0.1, placeholder: '体重を入力してください'%>
-    <%= number_field_tag 'body_fat_percentage', nil, step: 0.1, placeholder: '体脂肪を入力してください' %>
-    <%= text_field_tag 'memo', "", placeholder: 'メモを入力してください' %>
-    <%= submit_tag '体重をつぶやく' %>
+      <%= number_field_tag 'weight', nil, step: 0.1, placeholder: '体重を入力してください', class: "form-control" %>
+    </div>
+    <div class="form-group">
+    <%= number_field_tag 'body_fat_percentage', nil, step: 0.1, placeholder: '体脂肪を入力してください', class: "form-control"  %>
+    </div>
+    <div class="form-group">
+    <%= text_field_tag 'memo', "", placeholder: 'メモを入力してください', class: "form-control" %>
+    </div>
+    <%= submit_tag '体重をつぶやく', class: "btn btn-light" %>
   <% end %>
 
+  <hr>
+
   <%= form_tag post_my_weights_path , method: :get do %>
-    <%= number_field_tag 'times', 7, step: 1, placeholder: '回数を入力してください'%>
-    <%= submit_tag '回分のグラフをつぶやく' %>
+    <div class="form-row">
+      <div class="col">
+        <%= number_field_tag 'times', 7, step: 1, placeholder: '回数を入力してください', class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= submit_tag '回分のグラフをつぶやく', class: "btn btn-light" %>
+      </div>
+    </div>
   <% end %>
+
+  <hr>
+
   <%= link_to '測定一覧を表示', measurements_url %>
 <% else %>
   <p>ログインしてください</p>
