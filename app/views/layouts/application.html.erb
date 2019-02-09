@@ -30,8 +30,8 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <%= link_to 'ログアウト', logout_path, class: "nav-text"%>
         <% if current_user %>
+          <%= link_to 'ログアウト', logout_path, class: "nav-text"%>
           <%= link_to '設定', edit_path %>
         <% end %>
       </li>
