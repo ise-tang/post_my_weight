@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :measurements
 
   def self.create_with_omniauth(auth)
