@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.11'
 # Use sqlite3 as the database for Active Record
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '~>1.3.13'
   # See https://github.com/rails/execjs#readme for more supported runtimes
-  gem 'therubyracer', platforms: :ruby
   gem 'pry'
   gem 'pry-rails'
 end
@@ -54,7 +53,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'shoulda-matchers', '2.5.0'
+  gem 'shoulda-matchers', '~> 2.6.0'
   gem 'minitest'
 end
 
@@ -73,3 +72,5 @@ gem 'gruff'
 gem 'dotenv-rails'
 
 gem 'kaminari'
+
+gem 'rake', '< 11.0'
