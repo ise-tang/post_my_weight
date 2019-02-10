@@ -1,7 +1,13 @@
-.navbar {
+.header {
 background-color: #EEAE0E;
 }
 
-.container {
-  display: "inline";
-  }
+.footer {
+  margin-top: 0.4em;
+  background-color: #f5f5f5;
+  padding: 0.8em 0;
+}
+
+.footer .link-text {
+  padding: 0 0.5em;
+}
