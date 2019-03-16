@@ -11,3 +11,7 @@ background-color: #EEAE0E;
 .footer .link-text {
   padding: 0 0.5em;
 }
+
+body > .container {
+  margin-bottom: 70px;
+}
